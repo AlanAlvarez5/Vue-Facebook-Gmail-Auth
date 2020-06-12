@@ -1,32 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="secondary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+      </div>
+      <v-spacer></v-spacer>
+      <v-btn>
+        <span class="mr-2">Cerrar Sesión</span>
+        <v-icon>fas fa-user</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <v-container>
+        <router-view/>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
