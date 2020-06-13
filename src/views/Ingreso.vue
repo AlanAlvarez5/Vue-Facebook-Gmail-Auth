@@ -38,7 +38,7 @@
 
 <script>
 
-import { firebase, auth } from "@/firebase"
+import { firebase, auth, db } from "@/firebase"
 
 export default {
     name: 'Ingreso',
@@ -54,7 +54,22 @@ export default {
             try {
                 const res = await firebase.auth().signInWithPopup(provider);
                 const user = res.user;
-                console.log(user);
+                // console.log(user);
+                const usuario = {
+                    nombre: user.displayName,
+                    email: user.email,
+                    uid: user.uid,
+                    foto: user.photoURL
+                }
+                // console.log(usuario)
+
+                // Guardar en Firestore
+                await db.collection('usuarios').doc(usuario.uid).set(
+                    usuario
+                )
+
+                console.log('Usuario almacenado')
+
             } catch (error) {
                 console.log(error);
             }
