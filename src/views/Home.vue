@@ -1,5 +1,7 @@
 <template>
-  
+  <v-layout>
+    <h3>Ruta Protegida</h3>
+  </v-layout>
 </template>
 
 <script>

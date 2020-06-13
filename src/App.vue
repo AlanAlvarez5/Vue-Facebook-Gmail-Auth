@@ -16,7 +16,7 @@
         />
       </div>
       <v-spacer></v-spacer>
-      <v-btn>
+      <v-btn @click="cerrarSesion">
         <span class="mr-2">Cerrar Sesión</span>
         <v-icon>fas fa-user</v-icon>
       </v-btn>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 
 export default {
@@ -43,5 +44,8 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    ...mapActions(['cerrarSesion'])
+  }
 };
 </script>
