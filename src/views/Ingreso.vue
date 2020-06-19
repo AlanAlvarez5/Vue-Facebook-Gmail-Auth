@@ -1,7 +1,7 @@
 <template>
     <v-container>
-        <v-row justify="center">
-            <v-col xs=12 sm=8 md=6 xl=4>
+        <v-row justify="center" align="center">
+            <v-col xs=12 sm=8 md=6 xl=4 >
                 <v-card dark>
                     <v-card-text class="text-center display-1 text-uppercase" :class="registro ? 'accent': 'secondary'">
                         <span v-if="!registro">Ingreso</span>
@@ -39,7 +39,8 @@
 <script>
 
 import { firebase, auth, db } from "@/firebase"
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
+import router from '@/router'
 
 export default {
     name: 'Ingreso',
@@ -50,6 +51,7 @@ export default {
     },
     methods:{
         ...mapMutations(['nuevoUsuario']),
+        ...mapActions(['setUsuario']),
         google(){
             const provider = new firebase.auth.GoogleAuthProvider();
             this.ingresar(provider);    
@@ -64,20 +66,9 @@ export default {
                 const res = await firebase.auth().signInWithPopup(provider);
                 const user = res.user;
                 // console.log(user);
-                const usuario = {
-                    nombre: user.displayName,
-                    email: user.email,
-                    uid: user.uid,
-                    foto: user.photoURL
-                }
-                // console.log(usuario)
-                this.nuevoUsuario(usuario);
-                // Guardar en Firestore
-                await db.collection('usuarios').doc(usuario.uid).set(
-                    usuario
-                )
+                this.setUsuario(user)
 
-                console.log('Usuario almacenado')
+                router.push({name: 'Home'})
 
             } catch (error) {
                 console.log(error);

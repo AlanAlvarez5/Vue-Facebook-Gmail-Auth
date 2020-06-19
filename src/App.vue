@@ -1,27 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="secondary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>
-      <v-spacer></v-spacer>
-      <v-btn @click="cerrarSesion">
-        <span class="mr-2">Cerrar Sesión</span>
-        <v-icon>fas fa-user</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    
+    <Navbar v-if="usuario != ''"></Navbar>
     <v-content>
       <v-container>
         <router-view/>
@@ -31,21 +11,24 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+
+import Navbar from './components/Navbar'
+import { mapState } from 'vuex';
 
 
 export default {
   name: 'App',
 
   components: {
-
+    Navbar,
   },
 
   data: () => ({
     //
   }),
-  methods: {
-    ...mapActions(['cerrarSesion'])
+  computed: {
+    ...mapState(['usuario'])
   }
+  
 };
 </script>
