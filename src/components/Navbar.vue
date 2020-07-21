@@ -60,9 +60,11 @@ export default {
             drawer: false,
             items: [
                 { title: 'Dashboard', icon: 'fas fa-address-card', to: {name: 'Home'}},
-                { title: 'Account', icon: 'fas fa-address-card', to: {name: 'Home'}},
+                // { title: 'Account', icon: 'fas fa-address-card', to: {name: 'Home'}},
                 { title: 'Admin', icon: 'fas fa-image', to: {name: 'Admin'}},
+                { title: 'Chat', icon: 'fas fa-comments', to: {name: 'Chat'}},
             ]
+
         }
     },
     methods: {

@@ -2,11 +2,11 @@
   <v-app>
     
     <Navbar v-if="usuario != ''"></Navbar>
-    <v-content>
+    <v-main>
       <v-container>
         <router-view/>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

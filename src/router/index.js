@@ -23,6 +23,12 @@ Vue.use(VueRouter)
     name: 'Ingreso',
     component: () => import('../views/Ingreso.vue')
   },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: () => import('../views/Chat.vue'),
+    meta: { requiresAuth: true}
+  },
 ]
 
 const router = new VueRouter({
